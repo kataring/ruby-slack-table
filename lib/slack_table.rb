@@ -2,14 +2,18 @@
 
 require_relative "slack_table/version"
 
-module SlackTable
-  class Error < StandardError; end
-
+class SlackTable
   def initialize(options = {})
     @title = options[:title] || ""
     @columns = options[:columns] || []
-    @data_source = options[:data_source] || []
+    @data = options[:data] || []
   end
+
+  def render
+    "*#{@title}*\n```\n#{[header_row, data_rows].join("\n")}\n```"
+  end
+
+  private
 
   def padding(text, max_length, direction)
     if text.length < max_length
@@ -28,9 +32,9 @@ module SlackTable
     fill_dash(@columns.reduce(0) { |sum, col| (col[:width] || 10) + sum } + @columns.length - 1)
   end
 
-  def get_col(column, row = {})
+  def col(column, row = {})
     align = column[:align] == "right" ? :right : :left
-    data = "#{column[:prefix]}#{row[column[:data_index]]}#{column[:suffix]}"
+    data = (row[column[:index]]).to_s || ""
     padding(data, column[:width] || 10, align)
   end
 
@@ -39,17 +43,17 @@ module SlackTable
     padding(column[:title], column[:width] || 10, align)
   end
 
-  def get_row(row)
+  def rows(row)
     return lines if row == "-"
 
-    @columns.map { |column| get_col(column, row) }.join(" ")
+    @columns.map { |column| col(column, row) }.join(" ")
   end
 
   def header_row
     @columns.map { |column| get_header_col(column) }.join(" ")
   end
 
-  def render
-    "*#{@title}*\n```#{[header_row, *@data_source.map { |row| get_row(row) }].join("\n")}```"
+  def data_rows
+    @data.map { |row| rows(row) }
   end
 end
