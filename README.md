@@ -1,5 +1,7 @@
 # SlackTable
 
+- The SlackTable class creates and formats tables for Slack messages. It allows customization of title, columns, and data, providing a neat and clear presentation of tabular data in a Slack environment.
+
 ## Installation
 
 ```
