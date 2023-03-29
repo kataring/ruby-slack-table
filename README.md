@@ -1,1 +1,3 @@
-# ruby-slack-table
+# slack-table-ruby
+
+
