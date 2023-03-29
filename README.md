@@ -1,6 +1,6 @@
 # SlackTable
 
-- The SlackTable class creates and formats tables for Slack messages. It allows customization of title, columns, and data, providing a neat and clear presentation of tabular data in a Slack environment.
+- SlackTable: A Ruby class for creating and formatting customizable tables in Slack messages as an alternative to Markdown tables.
 
 ## Installation
 
