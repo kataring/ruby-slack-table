@@ -1,24 +1,43 @@
 # SlackTable
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/slack_table`. To experiment with that code, run `bin/console` for an interactive prompt.
-
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
-
-Install the gem and add to the application's Gemfile by executing:
-
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
-
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+```
+gem install slack_table
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'slack_table'
+
+columns = [
+  { title: 'Name', align: 'left', width: 10, index: :name },
+  { title: 'Age', align: 'right', width: 3, index: :age },
+  { title: 'City', align: 'left', width: 15, index: :city }
+]
+
+data = [
+  '-',
+  { name: 'Alice', age: 30, city: 'New York' },
+  { name: 'Bob', age: 25, city: 'San Francisco' },
+  { name: 'Charlie', age: 22, city: 'Tokyo' }
+]
+
+table = SlackTable.new(title: 'User Information', columns: columns, data: data)
+puts table.render
+```
+
+````markdown
+*User Information*
+```
+Name       Age City
+------------------------------
+Alice       30 New York
+Bob         25 San Francisco
+Charlie     22 Tokyo
+```
+````
 
 ## Development
 
@@ -28,7 +47,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/slack_table.
+Bug reports and pull requests are welcome on GitHub at <https://github.com/kataring/slack_table-ruby>
 
 ## License
 
