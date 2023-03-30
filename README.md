@@ -41,6 +41,9 @@ Charlie     22 Tokyo
 ```
 ````
 
+![image](https://user-images.githubusercontent.com/10582/228736820-fab37999-39f6-49f3-8621-e849616d60ca.png)
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
