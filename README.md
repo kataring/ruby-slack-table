@@ -8,6 +8,10 @@
 gem install slack_table
 ```
 
+```ruby
+gem 'slack_table'
+```
+
 ## Usage
 
 ```ruby
